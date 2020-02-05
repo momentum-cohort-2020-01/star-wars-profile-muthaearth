@@ -101,3 +101,5 @@ https://tachyons.io/components/#cards)
     </a>
 
     console.log(myJson.results);
+    console.log(response.json);
+console.log(newVeh);

@@ -1,7 +1,8 @@
 
   
 let vehicles = ['Sand Crawler', 'T-16 skyhopper', 'Snowspeeder', 'AT-ST', 'Sail barge']
-const selectVeh;
+const selectVeh = document.querySelector("#vehicles");
+
 //fetch StarWars Vehicles API
 fetch('https://swapi.co/api/vehicles')
 .then((response) => {
@@ -10,10 +11,9 @@ return response.json();
 .then(((myJson) => {
     let selectVeh = myJson.results.filter(allVeh => allVeh.name);
     let newVeh = vehicles.toString();
-    // console.log(newVeh);
+    console.log(newVeh)
 }));
-console.log(response.json);
-console.log(newVeh);
+
 
 self.addEventListener('fetch', function(event) {
     console.log('Handling fetch event for', event.request.url);
