@@ -1,0 +1,103 @@
+
+https://swapi.co/api/vehicles
+// fetch(‘http://example.com/movies.json’)
+//     .then((response) => {
+//     return response.json();
+// })
+//     .then(myJson) => {
+//         console.log(myJson)//object displays in console
+// })
+
+fetch(‘https://api/github.com/orgs/momentum-cohort-2020-01’)
+.then(function (response){
+    return response.jscon()
+})
+.then(function(data){
+    githubData = data
+    const newEl = document.createElement('h2')
+    newEl.innerText = data.name
+    dataSection.appendChild(newEl)
+})
+
+//add event listener to 
+
+fetchself.addEventListener('fetch', function(event) {
+  console.log('Handling fetch event for', event.request.url);
+
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      if (response) {
+        console.log('Found response in cache:', response);
+
+        return response;
+      }
+      console.log('No response found in cache. About to fetch from network...');
+
+      return fetch(event.request).then(function(response) {
+        console.log('Response from network is:', response);
+
+        return response;
+      }).catch(function(error) {
+        console.error('Fetching failed:', error);
+
+        throw error;
+      });
+    })
+  );
+});
+
+self.addEventListener('fetch', function(event) {
+  console.log('Handling fetch event for', event.request.url);
+
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      if (response) {
+        console.log('Found response in cache:', response);
+
+        return response;
+      }
+      console.log('No response found in cache. About to fetch from network...');
+
+      return fetch(event.request).then(function(response) {
+        console.log('Response from network is:', response);
+
+        return response;
+      }).catch(function(error) {
+        console.error('Fetching failed:', error);
+
+        throw error;
+      });
+    })
+  );
+});
+
+Tachyon Cards
+https://tachyons.io/components/#cards)
+
+ <!-- NewsCard
+    <article class="bg-white center mw5 ba b--black-10 mv4">
+        <div class="pv2 ph3">
+           <h1 class="f6 ttu tracked">Daily News Co.</h1>
+        </div>
+        <img src="http://tachyons.io/img/cat-720.jpg" class="w-100 db" alt="Closeup photo of a tabby cat yawning.">
+        <div class="pa3">
+          <a href="#" class="link dim lh-title">15 things every cat owner should know</a>
+          <small class="gray db pv2">AMP - <time>6 hours ago</time></small>
+        </div>
+      </article> -->
+
+       <a class="db center mw5 tc black link dim" title="Frank Ocean's Blonde on Apple Music"
+        href="https://geo.itunes.apple.com/us/album/blonde/id1146195596?at=1l3vqFJ&mt=1&app=music">
+
+        <img class="db ba b--black-10"/ alt="Frank Ocean Blonde Album Cover"
+            src="https://s3-us-west-1.amazonaws.com/tachyonsio/img/Blonde-Frank_Ocean.jpeg">
+
+        <dl class="mt2 f6 lh-copy">
+            <dt class="clip">Title</dt>
+            <dd class="ml0">Blonde</dd>
+            <dt class="clip">Artist</dt>
+            <dd class="ml0 gray">Frank Ocean</dd>
+        </dl>
+    </a>
+
+    console.log(myJson.results);
