@@ -71,6 +71,9 @@ self.addEventListener('fetch', function(event) {
   );
 });
 
+      //kill default action if event isn't properly handled
+      event.preventDefault();
+
 Tachyon Cards
 https://tachyons.io/components/#cards)
 
@@ -103,3 +106,19 @@ https://tachyons.io/components/#cards)
     console.log(myJson.results);
     console.log(response.json);
 console.log(newVeh);
+
+.then(((myJson) => {
+    let selectVeh = myJson.results.filter(allVeh => allVeh.name);
+    let newVeh = vehicles.toString();
+    console.log(newVeh)
+}));
+   
+// const ul = document.createElement('ul')
+// console.log({ul});
+
+// for (const li of customerListItems){
+// ul.appendChild(li)
+// }
+
+// document.querySelector('#customers').appendChild(ul)
+

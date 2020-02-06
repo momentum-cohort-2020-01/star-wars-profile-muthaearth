@@ -1,40 +1,66 @@
 
-  
-let vehicles = ['Sand Crawler', 'T-16 skyhopper', 'Snowspeeder', 'AT-ST', 'Sail barge']
-const selectVeh = document.querySelector("#vehicles");
+/*globals fetch*/
 
-//fetch StarWars Vehicles API
+let swapiData
+const dataSection = document.querySelector('#swapi-data')
+
+//fetch returns JS promise in response to 
+//StarWars API Vehicles access request
 fetch('https://swapi.co/api/vehicles')
-.then((response) => {
-return response.json();
-}) 
-.then(((myJson) => {
-    let selectVeh = myJson.results.filter(allVeh => allVeh.name);
-    let newVeh = vehicles.toString();
-    console.log(newVeh)
-}));
 
+//json method called to transform requested data
+.then(response => response.json())
 
-self.addEventListener('fetch', function(event) {
-    console.log('Handling fetch event for', event.request.url);
+//then function chained to access the requested data
+.then(((data) => {
+  swapiData = data
+  renderH2()
+
+  //url of repo returned
+  return data.repos_url
+})
+
+//chain a fetch of the url to return the value
+.then(url => fetch(url))
+
+//this function is chained to ensure data received as promised
+.then(response => response.json())
+
+//this function is chained to use the data; the console.log it
+.then(function(data) {
+  console.log(data)
+
+//this step creates an unordered list of DOM
+const repoList = document.createElement('ul')
+dataSection.appendChild(repoList)
+
+//these are Tachyons classes
+repoList.classList.add(
+  'list',
+  'pl0',
+  'ml0',
+  'center',
+  'mw6',
+  'ba',
+  'b--light-silver',
+  'br3'
+)
+
+//this loops through list of repos in the json data
+for (const repo of data) {
   
-    event.respondWith(
-      caches.match(event.request).then(function(response) {
-        if (response) {
-          console.log('Found response in cache:', response);
-          return response;
-        }
-        console.log('No response found in cache. About to fetch from network...');
-  
-        return fetch(event.request).then(function(response) {
-          console.log('Response from network is:', response);
-          return response;
-        }).catch(function(error) {
-          console.error('Fetching failed:', error);
-  
-          throw error;
-        });
-      })
-    );
-  });
+  //for each one, create a new li element
+  const listItem = document.createElement('li')
+  listItem.innerText = repo.name
+  listItem.classList.add('ph3', 'pv2', 'bb', 'b--light-silver')
+  repoList.appendChild(listItem)
+}
+})
+//this function creates and inserts an h2 element
+function renderH2() {
+  const h2El = document.createElement('h2')
+  h2El.innerText = swapiData.name
+  dataSection.appendChild(h2El)
+})
+
 
